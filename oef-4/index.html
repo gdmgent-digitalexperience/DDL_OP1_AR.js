@@ -16,6 +16,7 @@
         <a-assets>
             <img src="./images/kamakamakamakamakameleon.avif" id="lizzard">
             <video id="kittykat" playsinline autoplay loop src="./videos/kittykat.mp4"></video>
+            <video id="chicken" muted playsinline autoplay loop src="./videos/chicken.mp4"></video>
         </a-assets>
 
         <a-marker preset="hiro">
@@ -23,13 +24,21 @@
         </a-marker>
 
         <a-marker preset="kanji">
-            <a-video rotation="-90 0 0" width="1.5" height="1" src="#kittykat"></a-video>
+            <a-video rotation="-90 0 0" width="1.5" height="1" src="#chicken"></a-video>
         </a-marker>
 
         <a-entity camera></a-entity>
 
     </a-scene>
 
+    <script>
+        // make the video play when the marker is detected
+        const video = document.querySelector('#chicken');
+        const marker = document.querySelector('a-marker[preset="kanji"]');
+        marker.addEventListener('markerFound', () => {
+            video.play();
+        });
+    </script>
 
 </body>
 </html>
